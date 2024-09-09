@@ -9,6 +9,8 @@ import com.baomidou.mybatisplus.samples.crud.entity.User;
 import com.baomidou.mybatisplus.samples.crud.entity.User2;
 import com.baomidou.mybatisplus.samples.crud.mapper.User2Mapper;
 import com.baomidou.mybatisplus.samples.crud.mapper.UserMapper;
+import com.baomidou.mybatisplus.samples.crud.service.IUserService;
+import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -33,6 +36,9 @@ public class CrudTest {
     private UserMapper mapper;
     @Autowired
     private User2Mapper user2Mapper;
+
+    @Resource
+    private IUserService userService;
 
     @Test
     public void aInsert() {
@@ -227,5 +233,12 @@ public class CrudTest {
         Assertions.assertEquals(user2Mapper.selectList(Wrappers.<User2>query().like("name", "J")).size(), 2);
         Assertions.assertEquals(user2Mapper.selectList(Wrappers.<User2>query().gt("age", 18)
                 .setEntity(new User2().setName("J"))).size(), 1);
+    }
+
+    @Test
+    public void testGet() {
+        LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(User::getAge, 18);
+        System.out.println(userService.getObj(wrapper, Function.identity()));
     }
 }
