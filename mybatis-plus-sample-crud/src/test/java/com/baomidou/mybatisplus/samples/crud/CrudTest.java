@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -240,5 +241,22 @@ public class CrudTest {
         LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(User::getAge, 18);
         System.out.println(userService.getObj(wrapper, Function.identity()));
+    }
+
+    @Test
+    public void testSaveBatch() {
+        // 假设有一组 User 实体对象
+        List<User> users = Arrays.asList(
+                new User().setName("Alice").setAge(16).setEmail("alice@example.com"),
+                new User().setName("Bob").setAge(18).setEmail("bob@example.com"),
+                new User().setName("Charlie").setAge(19).setEmail("charlie@example.com")
+        );
+        // 使用默认批次大小进行批量插入
+        boolean result = userService.saveBatch(users); // 调用 saveBatch 方法，默认批次大小
+        if (result) {
+            System.out.println("Users saved successfully.");
+        } else {
+            System.out.println("Failed to save users.");
+        }
     }
 }

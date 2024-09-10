@@ -42,12 +42,13 @@
         <module>mybatis-plus-sample-pagehelper</module>
         <module>mybatis-plus-sample-association</module>
         <module>mybatis-plus-sample-jsonb</module>
+        <module>mybatis-plus-mysql-demo</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <mybatisplus.version>3.5.8-SNAPSHOT</mybatisplus.version>
+        <mybatisplus.version>3.5.7</mybatisplus.version>
         <skipTests>false</skipTests>
         <argLine>-Dfile.encoding=UTF-8</argLine>
     </properties>
@@ -73,6 +74,11 @@
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>8.0.26</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>3.5.7</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
