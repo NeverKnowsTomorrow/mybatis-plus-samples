@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author qiao
- * @since 2024-09-10 23:23:45
+ * @since 2024-09-11 22:45:15
  */
 @Service
 public class T2ServiceImpl extends ServiceImpl<T2Mapper, T2> implements IT2Service {

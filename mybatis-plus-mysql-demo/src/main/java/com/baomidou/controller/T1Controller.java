@@ -1,7 +1,7 @@
 package com.baomidou.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
@@ -9,9 +9,9 @@ import org.springframework.stereotype.Controller;
  * </p>
  *
  * @author qiao
- * @since 2024-09-10 23:23:45
+ * @since 2024-09-11 22:45:15
  */
-@Controller
+@RestController
 @RequestMapping("/t1")
 public class T1Controller {
 

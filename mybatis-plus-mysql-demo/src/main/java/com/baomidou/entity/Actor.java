@@ -1,27 +1,40 @@
 package com.baomidou.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
+
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author qiao
- * @since 2024-09-10 23:23:45
+ * @since 2024-09-11 22:45:15
  */
 @Getter
 @Setter
-public class Actor implements Serializable {
+@Accessors(chain = true)
+public class Actor extends Model<Actor> {
 
     private static final long serialVersionUID = 1L;
 
-      private Integer id;
+    @TableId(value = "id", type = IdType.ASSIGN_ID)
+    private Integer id;
 
     private String name;
 
     private LocalDateTime updateTime;
+
+    @Override
+    public Serializable pkVal() {
+        return this.id;
+    }
 }

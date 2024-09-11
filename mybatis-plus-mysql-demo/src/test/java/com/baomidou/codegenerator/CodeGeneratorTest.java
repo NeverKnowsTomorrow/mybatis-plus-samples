@@ -1,8 +1,8 @@
 package com.baomidou.codegenerator;
 
 import com.baomidou.SpringBaseTest;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
-import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -34,10 +34,13 @@ public class CodeGeneratorTest extends SpringBaseTest {
                         .controller("controller")
                 )
                 .strategyConfig(builder -> builder
-                        .entityBuilder()
-                        .enableLombok()
+                        .entityBuilder().enableLombok().enableFileOverride().enableChainModel().enableActiveRecord().idType(IdType.ASSIGN_ID)
+                        .controllerBuilder().enableRestStyle().enableFileOverride()
+                        .mapperBuilder().enableFileOverride()
+                        .serviceBuilder().enableFileOverride()
+                        .build()
+
                 )
-//                .templateEngine(new FreemarkerTemplateEngine())
                 .execute();
     }
 }

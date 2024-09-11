@@ -2,10 +2,14 @@ package com.baomidou.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
+
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
 /**
  * <p>
@@ -13,15 +17,16 @@ import lombok.Setter;
  * </p>
  *
  * @author qiao
- * @since 2024-09-10 23:23:45
+ * @since 2024-09-11 22:45:15
  */
 @Getter
 @Setter
-public class Employees implements Serializable {
+@Accessors(chain = true)
+public class Employees extends Model<Employees> {
 
     private static final long serialVersionUID = 1L;
 
-      @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.ASSIGN_ID)
     private Integer id;
 
     /**
@@ -43,4 +48,9 @@ public class Employees implements Serializable {
      * 入职时间
      */
     private LocalDateTime hireTime;
+
+    @Override
+    public Serializable pkVal() {
+        return this.id;
+    }
 }
