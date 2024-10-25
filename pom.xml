@@ -48,7 +48,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <mybatisplus.version>3.5.7</mybatisplus.version>
+        <mybatisplus.version>3.5.9</mybatisplus.version>
         <skipTests>false</skipTests>
         <argLine>-Dfile.encoding=UTF-8</argLine>
     </properties>
@@ -111,12 +111,19 @@
                 <mybatisplus.artifactId>mybatis-plus-spring-boot3-starter</mybatisplus.artifactId>
                 <java.version>17</java.version>
             </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>com.baomidou</groupId>
+                    <artifactId>mybatis-plus-jsqlparser</artifactId>
+                    <version>${mybatisplus.version}</version>
+                </dependency>
+            </dependencies>
             <dependencyManagement>
                 <dependencies>
                     <dependency>
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-dependencies</artifactId>
-                        <version>3.3.2</version>
+                        <version>3.3.4</version>
                         <type>pom</type>
                         <scope>import</scope>
                     </dependency>
@@ -132,7 +139,7 @@
                     <plugin>
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-maven-plugin</artifactId>
-                        <version>3.3.2</version>
+                        <version>3.3.4</version>
                     </plugin>
                 </plugins>
             </build>
@@ -143,6 +150,13 @@
                 <mybatisplus.artifactId>mybatis-plus-boot-starter</mybatisplus.artifactId>
                 <java.version>8</java.version>
             </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>com.baomidou</groupId>
+                    <artifactId>mybatis-plus-jsqlparser-4.9</artifactId>
+                    <version>${mybatisplus.version}</version>
+                </dependency>
+            </dependencies>
             <dependencyManagement>
                 <dependencies>
                     <dependency>
